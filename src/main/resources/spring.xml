@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xmlns:aop="http://www.springframework.org/schema/aop"
+ xmlns:context="http://www.springframework.org/schema/context" 
+ xsi:schemaLocation=
+ "http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-4.2.xsd 
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-4.2.xsd
+http://www.springframework.org/schema/aop 
+http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+">
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="userDao" class="com.lizewu.blog.dao.impl.UserDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	<bean id="userService" class="com.lizewu.blog.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<bean id="registerAction" class="com.lizewu.blog.action.RegisterAction" scope="prototype">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	 <bean id="loginAction" class="com.lizewu.blog.action.LoginAction" >
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<bean id="blogInfoDao" class="com.lizewu.blog.dao.impl.BlogInfoDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="blogInfoService" class="com.lizewu.blog.service.impl.BlogInfoServiceImpl">
+		<property name="blogInfoDao">
+			<ref bean="blogInfoDao"/>
+		</property>
+	</bean>
+	<bean id="editBlogInfoAction" class="com.lizewu.blog.action.EditBlogInfo" scope="prototype">
+		<property name="blogInfoService" ref="blogInfoService"/>
+	</bean>
+		<bean id="getBlogInfoAction" class="com.lizewu.blog.action.GetBlogInfo" scope="prototype">
+		<property name="blogInfoService" ref="blogInfoService"/>
+	</bean>
+	<bean id="articleDao" class="com.lizewu.blog.dao.impl.ArticleDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="articleService" class="com.lizewu.blog.service.impl.ArticleServiceImpl">
+		<property name="articleDao" ref="articleDao"></property>
+	</bean>
+	<bean id="addArticle" class="com.lizewu.blog.action.AddArticle">
+		<property name="articleService" ref="articleService"></property>
+	</bean>
+	
+	<bean id="showUserAllArticle" class="com.lizewu.blog.action.ShowUserAllArticle">
+		<property name="articleService" ref="articleService"></property>
+	</bean>
+	<bean id="showArticle" class="com.lizewu.blog.action.ShowArticle">
+		<property name="articleService" ref="articleService"></property>
+		<property name="hitsService" ref="hitsService"/>
+	</bean>
+	<bean id="hitsDao" class="com.lizewu.blog.dao.impl.HitsDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"/>
+	</bean>
+	<bean id="hitsService" class="com.lizewu.blog.service.impl.HitsServiceImpl">
+		<property name="hitsDao" ref="hitsDao"/>
+	</bean>
+	<bean id="critiqueDao" class="com.lizewu.blog.dao.impl.CritiqueDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="critiqueService" class="com.lizewu.blog.service.impl.CritiqueServiceImpl">
+		<property name="critiqueDao" ref="critiqueDao"/>
+	</bean>
+	<bean id="critiqueAction" class="com.lizewu.blog.action.AddCritique">
+		<property name="critiqueService" ref="critiqueService"></property>
+	</bean>
+</beans>

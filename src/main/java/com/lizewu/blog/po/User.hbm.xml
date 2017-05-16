@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 5.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-5.0.dtd">
+ 
+<hibernate-mapping  package="com.lizewu.blog.po">
+ 
+    <class name="User" table="t_user"  >
+        <id name="username">
+        	<generator class="assigned"></generator>
+        </id>
+        <property name="password" length="32">
+        	<column name="password"></column>
+        </property>
+         <property name="repassword" length="20"></property>
+         <property name="nickname" length="20"></property>
+         <property name="question" length="50"></property>
+         <property name="answer" length="50"></property>
+    </class>
+</hibernate-mapping>

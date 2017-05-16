@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 5.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-5.0.dtd">
+ 
+<hibernate-mapping  package="com.lizewu.blog.po" >
+ 
+    <class name="BlogInfo" >
+        <id name="username">
+        	<generator class="assigned"></generator>
+        </id>
+         <property name="blogtitle" length="20"></property>
+         <property name="idiograph" length="20"></property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<validator type="requiredstring">
+		<param name="fieldName">user.username</param>
+		<param name="trim">true</param>
+		<message>必须输入用户名</message>
+	</validator>
+	
+	<validator type="regex">
+		<param name="fieldName">user.username</param>
+		<param name="regex"><![CDATA[(\w{6,20})]]></param>
+		<message>用户名的长度必须在6-20之间</message>
+	</validator>
+	
+	<validator type="requiredstring">
+		<!-- 细心 -->
+		<param name="fieldName">user.password</param>
+		<param name="trim">true</param>
+		<message>密码不能为空</message>
+	</validator>
+	<validator type="regex">
+		<param name="fieldName">user.password</param>
+		<param name="regex"><![CDATA[(\w{6,20})]]></param>
+		<message>密码的长度必须在6-20之间</message>
+	</validator>
+	<validator type="requiredstring">
+		<param name="fieldName">user.repassword</param>
+		<param name="trim">true</param>
+		<message>必须输入确认密码</message>
+	</validator>
+	<validator type="regex">
+		<param name="fieldName">user.repassword</param>
+		<param name="regex"><![CDATA[(\w{6,20})]]></param>
+		<message>确认密码的长度必须在6-20之间</message>
+	</validator>
+	
+	<validator type="fieldexpression">
+		<param name="fieldName">user.repassword</param>
+		<param name="expression"><![CDATA[(user.repassword==user.password)]]></param>
+		<message>确认密码必须和密码相同</message>
+	</validator>
+	<validator type="requiredstring">
+		<param name="fieldName">user.nickname</param>
+		<param name="trim">true</param>
+		<message>必须输入昵称</message>
+	</validator>
+
+	<validator type="regex">
+		<param name="fieldName">nickname</param>
+		<param name="regex"><![CDATA[([\u4e00-\u9fa5]{2,20})]]></param>
+		<message>昵称长度必须为2至20之间</message>
+	</validator>
+		<validator type="requiredstring">
+		<param name="fieldName">user.answer</param>
+		<param name="trim">true</param>
+		<message>必须输入密码保护答案</message>
+	</validator>
+
+	<validator type="regex">
+		<param name="fieldName">user.answer</param>
+		<param name="regex"><![CDATA[([\u4e00-\u9fa5]{5,50})]]></param>
+		<message>密码保护答案长度必须为5至50之间</message>
+	</validator>
+</validators>

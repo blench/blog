@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<validator type="requiredstring">
+		<param name="fieldName">blogInfo.blogtitle</param>
+		<param name="trim">true</param>
+		<message>标题不能为空</message>
+	</validator>
+	
+	<validator type="regex">
+		<param name="fieldName">blogInfo.blogtitle</param>
+		<param name="expression"><![CDATA[([\u4e00-\u9fa5,a-z,A-Z,0-9]{4,20})]]></param>
+		<message>博客标题长度必须为4至20之间</message>
+	</validator>
+	
+	<validator type="requiredstring">
+		<!-- 细心 -->
+		<param name="fieldName">blogInfo.idiograph</param>
+		<param name="trim">true</param>
+		<message>个性名不能为空</message>
+	</validator>
+	<validator type="regex">
+		<param name="fieldName">blogInfo.idiograph</param>
+		<param name="expression"><![CDATA[([\u4e00-\u9fa5,a-z,A-Z,0-9]{4,20})]]></param>
+		<message>个性签名长度必须为4至20之间</message>
+	</validator>
+</validators>

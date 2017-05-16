@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 5.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-5.0.dtd">
+ 
+<hibernate-mapping  package="com.lizewu.blog.po">
+ 
+    <class name="Article">
+        <id name="id">
+        	<generator class="increment"></generator>
+        </id>
+        
+         <property name="title" ></property>
+         <property name="content" ></property>
+         <property name="username"></property>
+         <property name="date" ></property>
+         <property name="hasRead" ></property>
+    </class>
+</hibernate-mapping>
